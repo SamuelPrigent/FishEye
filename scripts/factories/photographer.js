@@ -7,7 +7,7 @@ function photographerFactory(data) {
 
   // Création de l'html
   function getUserCardDOM() {
-    const article = document.createElement("article"); // div globale
+    const article = document.createElement("article"); // article ou => liens a + href ?
     const img = document.createElement("img"); // div img
     img.setAttribute("src", picture); // attribue liens
     const h2 = document.createElement("h2"); // div titre
