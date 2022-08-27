@@ -9,7 +9,7 @@ async function getPhotographers() {
     });
 
     const photographers = await response.json();
-    console.log("Photographers =", photographers);
+    // console.log("Photographers =", photographers);
 
     return photographers;
   } catch (error) {
@@ -23,9 +23,10 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
+  // div ou l'on injecte les card
   const photographersSection = document.querySelector(".photographer_section");
 
-  // Création Card .forEach Object in array [photographer]
+  // forEach Objet array [photographer] => 1 Card
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();

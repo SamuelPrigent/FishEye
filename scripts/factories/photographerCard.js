@@ -1,4 +1,4 @@
-// Function Création => 1 card Photographe
+// Function Création de Card
 function photographerFactory(data) {
   const { name, portrait } = data;
 
@@ -7,11 +7,15 @@ function photographerFactory(data) {
 
   // Création de l'html
   function getUserCardDOM() {
-    const article = document.createElement("article"); // article ou => liens a + href ?
-    const img = document.createElement("img"); // div img
-    img.setAttribute("src", picture); // attribue liens
-    const h2 = document.createElement("h2"); // div titre
-    h2.textContent = name; // attribue le titre
+    // Global Div => article ou "a" ?
+    const article = document.createElement("a");
+    article.setAttribute("href", `photographer.html?id=${data.id}`); // Liens href array id produits pour nommer url
+    // Img
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    // H2
+    const h2 = document.createElement("h2");
+    h2.textContent = name;
     // Location
     const location = document.createElement("div");
     location.innerText = `${data.city}, ${data.country}`;
@@ -24,17 +28,15 @@ function photographerFactory(data) {
     const price = document.createElement("div");
     price.innerText = `${data.price}€/jour`;
     price.classList.add("priceText");
-    //
+    // Info
     const info = document.createElement("div");
     info.classList.add("infoText");
 
-    console.log(data);
-    // Put div in Article
+    // In Article
     article.appendChild(img);
     article.appendChild(h2);
-    // info
     article.appendChild(info);
-    // info text
+    // In Info
     info.appendChild(location);
     info.appendChild(quote);
     info.appendChild(price);

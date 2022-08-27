@@ -4,21 +4,24 @@
 
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
+  min-height: 300px;
   margin: 0 100px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
 }
 
 .contact_button {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
   color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
+  padding: 20px 15px 20px;
   border: none;
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  margin: auto;
+  min-width: 161px;
 }
 
 .modal {
@@ -73,4 +76,50 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+#headerLeft {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px 20px 60px;
+  max-width: 33%;
+}
+
+#headerRight {
+  display: flex;
+  align-items: center;
+  padding: 0px 60px 0px;
+}
+
+.leftDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.leftDiv-title {
+  color: #d3573c;
+  font-size: 49px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.leftDiv-location {
+  font-size: 21px;
+  color: #901c1c;
+  font-weight: 400;
+}
+
+.leftDiv-tagLine {
+  font-size: 18px;
+  font-weight: lighter;
+  color: #646464;
+}
+
+.photographer-pics {
+  margin-top: 20px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 50px 100px 0px;
 }

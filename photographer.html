@@ -12,15 +12,25 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
+        <!-- Nom + Location + Quote -->
+        <div id="headerLeft"></div>
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
+        <!-- Photographer img -->
+        <div id="headerRight"></div>
       </div>
+      <!-- Pics -->
+      <div class="photographer-pics"></div>
     </main>
+    <footer></footer>
+    <!-- Modal -->
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -39,5 +49,7 @@
     <!-- JS -->
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <!-- Test -->
+    <script src="/scripts/utils/api-photographers.js"></script>
   </body>
 </html>
