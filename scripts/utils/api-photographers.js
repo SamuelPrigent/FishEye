@@ -1,12 +1,16 @@
 //
-async function getData() {
+async function fetchData() {
   // récupère les informations des photographes dans phototographers.json
-  let url = "./data/photographers.json";
-  let response = await fetch(url);
-  let data = await response.json();
+  const response = await fetch("./data/photographers.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
 
-  const dataPhotographers = [...data.photographers];
-  const dataMedias = [...data.media];
+  const photographers = await response.json();
+  const dataPhotographers = [...photographers.photographers];
+  const dataMedias = [...photographers.media];
 
   return {
     photographers: dataPhotographers,

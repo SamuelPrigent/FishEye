@@ -1,35 +1,51 @@
 // Personnalisation de la page via l'ID
 
-//Get ID of One Photographer
+// ============ Get photographer ID in Params =============
 function getIdPhotographer() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
   return id;
 }
+// Define ID const for all function
+const idPhotographer = getIdPhotographer();
 
-// const idPhotographer = getIdPhotographer();
+// ============ HEADER =============
 
-// Get Data of One Photographer
+// // === (TEST TEST TEST TEST ===
+// async function getPhotographers() {
+//   // Données récupérées dans le json
+//   const response = await fetch("./data/photographers.json", {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//   });
+
+//   const photographers = await response.json();
+//   // console.log(photographers.photographers);
+
+//   return photographers;
+// }
+
+// ====== Get Data for (Header) ======
 async function getOnePhotographer() {
-  // Fetch dans phototographers.json
+  // Données récupérées dans le json
   const response = await fetch("./data/photographers.json", {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
   });
-  // const photographers = (await getData()).photographers; // méthode via utills ??
 
-  // (response + id ) for return
   const photographers = await response.json();
-  const idPhotographer = getIdPhotographer();
+  // console.log(photographers.photographers);
 
   return photographers.photographers.find(
     (element) => element.id === parseInt(idPhotographer)
   );
 }
 
-// Création de l'html
+// ====== Création HTML (Header) ======
 async function getUserHeader() {
   const data = await getOnePhotographer();
   //   console.log("data =", data);
@@ -78,4 +94,48 @@ async function getUserHeader() {
 
 getUserHeader();
 
-// Get Photographers Pics by PhotographerId in Media
+// ============ photographerPics =============
+
+// ====== Get Data for (photographerPics) ======
+
+async function getPhotographerPics() {
+  // Fetch in phototographers.json
+  const response = await fetch("./data/photographers.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  const photographers = await response.json();
+  const photographerPics = photographers.media.filter(
+    (element) => element.photographerId === parseInt(idPhotographer)
+  );
+
+  // Listes des photos du Photographe
+  console.log(photographerPics);
+
+  return photographerPics;
+}
+
+// ====== Creation HTML (Pics) ======
+
+async function displayPics(photographer) {
+  // Div ou l'on place les Card
+  const picsSection = document.querySelector(".photographer-pics");
+
+  // Each Object => 1 Card
+  photographer.forEach((data) => {
+    const picsModel = picsFactory(data); //
+    const photographerPics = picsModel.createPicsCard(); //
+    // injecte la card
+    picsSection.appendChild(photographerPics);
+  });
+}
+
+// Récupère les datas pour éxécuter la fonction
+async function init() {
+  const { photographers } = await getPhotographerPics(); // data via pic ou OnePhotographers
+  displayPics(photographers);
+}
+init();

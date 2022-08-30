@@ -1,32 +1,47 @@
+// async function getPhotographers() {
+//   // Données récupérées dans le json
+//   try {
+//     const response = await fetch("./data/photographers.json", {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     });
+
+//     const photographers = await response.json();
+//     // console.log("Photographers =", photographers);
+
+//     return photographers;
+//   } catch (error) {
+//     console.error(error);
+//   }
+
+//   // Retourne le tableau photographers
+//   return {
+//     photographers: [...photographers],
+//   };
+// }
+
 async function getPhotographers() {
   // Données récupérées dans le json
-  try {
-    const response = await fetch("./data/photographers.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+  const response = await fetch("./data/photographers.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
 
-    const photographers = await response.json();
-    // console.log("Photographers =", photographers);
+  const photographers = await response.json();
+  // console.log(photographers.photographers);
 
-    return photographers;
-  } catch (error) {
-    console.error(error);
-  }
-
-  // Retourne le tableau photographers
-  return {
-    photographers: [...photographers],
-  };
+  return photographers;
 }
 
+// Affiche les Card Photographes sous forme le liste
 async function displayData(photographers) {
-  // div ou l'on injecte les card
+  // conteneur des card
   const photographersSection = document.querySelector(".photographer_section");
-
-  // forEach Objet array [photographer] => 1 Card
+  // 1 Objet => 1 Card
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
@@ -34,13 +49,9 @@ async function displayData(photographers) {
   });
 }
 
+// Récupère les datas pour éxécuter la fonction
 async function init() {
-  try {
-    // Récupère les datas des photographes et les affiche
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
-  } catch (error) {
-    console.error(error);
-  }
+  const { photographers } = await getPhotographers();
+  displayData(photographers);
 }
 init();
