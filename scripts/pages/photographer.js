@@ -118,11 +118,14 @@ async function getPhotographerPics() {
   return photographerPics;
 }
 
+// getPhotographerPics();
+
 // ====== Creation HTML (Pics) ======
 
+// === Create .forEach ===
 async function displayPics(photographer) {
   // Div ou l'on place les Card
-  const picsSection = document.querySelector(".photographer-pics");
+  const picsSection = document.querySelector(".conteneur-pics");
 
   // Each Object => 1 Card
   photographer.forEach((data) => {
@@ -133,9 +136,9 @@ async function displayPics(photographer) {
   });
 }
 
-// Récupère les datas pour éxécuter la fonction
+// === Récupère les datas pour éxécuter la fonction ===
 async function init() {
-  const { photographers } = await getPhotographerPics(); // data via pic ou OnePhotographers
-  displayPics(photographers);
+  const photographerPics = await getPhotographerPics(); // data via pic ou OnePhotographers
+  displayPics(photographerPics);
 }
 init();

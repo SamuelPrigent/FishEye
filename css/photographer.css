@@ -117,9 +117,51 @@ form input {
   color: #646464;
 }
 
-.photographer-pics {
-  margin-top: 20px;
-  height: 200px;
-  border: 1px solid black;
-  margin: 50px 100px 0px;
+.conteneur-filtre {
+  height: auto;
+  margin: 20px 100px 0px;
+  border: 0px solid black;
+  font-size: 19px;
+  font-weight: bolder;
+}
+
+/* Img Pics List */
+
+.conteneur-pics {
+  height: auto;
+  margin: 60px 100px 0px;
+  border: 0px solid black;
+  display: grid;
+  column-gap: 8%;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+.PicsCard {
+  border: 0px solid black;
+}
+
+.imgPicsList {
+  aspect-ratio: 1/0.89;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.infoPics {
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 34px;
+  color: #901c1c;
+  font-size: 22px;
+  font-weight: lighter;
+  justify-content: space-between;
+}
+
+.infoPics-left {
+}
+
+.infoPics-right {
+  display: flex;
+  gap: 6px;
 }
