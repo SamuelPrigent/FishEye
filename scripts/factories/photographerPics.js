@@ -1,17 +1,8 @@
 // Function Création de Card
 function picsFactory(data) {
   //
-  console.log(data);
-  // Liens Media vers Images ou Vidéo
-  const link = `assets/photographers-pics/${data.photographerId}/${data.image}`;
-
-  //   if (data.image.indexOf(".jpg") >= 0) {
-  //     const picture = `assets/photographers-pics/${data.photographerId}/${data.image}`;
-  //   }
-  //   if (data.image.indexOf(".mp4") >= 0) {
-  //     const picture = `assets/photographers-pics/${data.photographerId}/${data.image}`;
-  //   }
-
+  //   console.log(data);
+  //
   // Création de l'html
   function createPicsCard() {
     // Global Div

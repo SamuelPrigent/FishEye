@@ -11,22 +11,6 @@ const idPhotographer = getIdPhotographer();
 
 // ============ HEADER =============
 
-// // === (TEST TEST TEST TEST ===
-// async function getPhotographers() {
-//   // Données récupérées dans le json
-//   const response = await fetch("./data/photographers.json", {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//   });
-
-//   const photographers = await response.json();
-//   // console.log(photographers.photographers);
-
-//   return photographers;
-// }
-
 // ====== Get Data for (Header) ======
 async function getOnePhotographer() {
   // Données récupérées dans le json
@@ -94,6 +78,31 @@ async function getUserHeader() {
 
 getUserHeader();
 
+// ====== Bottom Right (Info) ======
+async function getBottomInfo() {
+  const data = await getOnePhotographer();
+  // console.log(data);
+  const picsData = await getPhotographerPics();
+  // console.log("pics Data", picsData);
+
+  let totalLikes = 0;
+
+  // Calcul du nombre de likes total
+  picsData.forEach((data) => {
+    totalLikes = totalLikes + data.likes;
+    // console.log("New Total", totalLikes);
+    return totalLikes;
+  });
+  // Div Cible
+  const bottomInfo = document.querySelector(".bottomRightInfo");
+  bottomInfo.innerHTML = `
+  <div>${totalLikes} ♥︎</div>
+  <div>${data.price}€ / jour</div>
+  `;
+}
+
+getBottomInfo();
+
 // ============ photographerPics =============
 
 // ====== Get Data for (photographerPics) ======
@@ -113,7 +122,16 @@ async function getPhotographerPics() {
   );
 
   // Listes des photos du Photographe
-  console.log(photographerPics);
+  // console.log(photographerPics);
+
+  // Change Pics Order by => Filter
+  //
+  // Popularity (likes Number)
+  //
+  // Date (new - older)
+  //
+  // Title (Abc)
+  //
 
   return photographerPics;
 }
@@ -142,3 +160,5 @@ async function init() {
   displayPics(photographerPics);
 }
 init();
+
+// ====== Modal LightBox for Pics  ======

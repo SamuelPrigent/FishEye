@@ -118,18 +118,32 @@ form input {
 }
 
 .conteneur-filtre {
+  display: flex;
+  gap: 20px;
   height: auto;
-  margin: 20px 100px 0px;
+  margin: 22px 100px 0px;
   border: 0px solid black;
   font-size: 19px;
   font-weight: bolder;
+}
+
+.button-filtre {
+  font-size: 19px;
+  font-weight: bolder;
+  color: white;
+  padding: 15px 18px 15px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
 }
 
 /* Img Pics List */
 
 .conteneur-pics {
   height: auto;
-  margin: 60px 100px 0px;
+  margin: 52px 100px 0px;
   border: 0px solid black;
   display: grid;
   column-gap: 8%;
@@ -150,10 +164,10 @@ form input {
 
 .infoPics {
   display: flex;
-  margin-top: 8px;
+  margin-top: 9px;
   margin-bottom: 34px;
   color: #901c1c;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: lighter;
   justify-content: space-between;
 }
@@ -164,4 +178,19 @@ form input {
 .infoPics-right {
   display: flex;
   gap: 6px;
+}
+
+.bottomRightInfo {
+  padding: 10px 25px 10px;
+  border-radius: 4px 4px 0px 0px;
+  background-color: #db8876;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  font-size: 19px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 44px;
 }
