@@ -78,6 +78,8 @@ form input {
   border-radius: 5px;
 }
 
+/* ==== Header Photographe === */
+
 #headerLeft {
   display: flex;
   align-items: center;
@@ -117,36 +119,14 @@ form input {
   color: #646464;
 }
 
-.conteneur-filtre {
-  display: flex;
-  gap: 20px;
-  height: auto;
-  margin: 22px 100px 0px;
-  border: 0px solid black;
-  font-size: 19px;
-  font-weight: bolder;
-}
-
-.button-filtre {
-  font-size: 19px;
-  font-weight: bolder;
-  color: white;
-  padding: 15px 18px 15px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
-  cursor: pointer;
-  width: auto;
-}
-
-/* Img Pics List */
+/* === Img Pics List === */
 
 .conteneur-pics {
   height: auto;
-  margin: 52px 100px 0px;
+  margin: 44px 100px 0px;
   border: 0px solid black;
   display: grid;
-  column-gap: 8%;
+  column-gap: 7.5%;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
 }
@@ -175,9 +155,12 @@ form input {
 .infoPics-left {
 }
 
+/* === Like Button Div === */
 .infoPics-right {
   display: flex;
   gap: 6px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .bottomRightInfo {
@@ -193,4 +176,66 @@ form input {
   justify-content: center;
   align-items: center;
   gap: 44px;
+}
+
+/* === Filtres ===  */
+.conteneur-filtre {
+  display: flex;
+  gap: 15px;
+  height: auto;
+  margin: 29px 100px auto;
+  border: 0px solid black;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+/* = Dropdown Button = */
+
+.dropbtn {
+  align-items: center;
+  background: #901c1c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  font-size: 17px;
+  font-weight: 500;
+  justify-content: flex-start;
+  padding: 14px 45px 14px 18px;
+  width: auto;
+  gap: 9px;
+  cursor: pointer;
+  border: none;
+  list-style-position: outside;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.icon-position {
+  position: relative;
+  top: 13px;
+  left: -48px;
+  color: white;
+  pointer-events: none;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover {
+  background-color: #2980b9;
+  border: none;
+  outline: none;
+}
+
+.dropbtn:focus {
+  border: none;
+  outline: none;
 }

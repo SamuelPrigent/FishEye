@@ -117,26 +117,22 @@ async function getPhotographerPics() {
   });
 
   const photographers = await response.json();
+
+  // Selection photographer Pics
   const photographerPics = photographers.media.filter(
     (element) => element.photographerId === parseInt(idPhotographer)
   );
 
-  // Listes des photos du Photographe
-  // console.log(photographerPics);
-
-  // Change Pics Order by => Filter
-  //
-  // Popularity (likes Number)
-  //
-  // Date (new - older)
-  //
-  // Title (Abc)
-  //
+  // // Popularity - Likes Number (by Default)
+  photographerPics.sort((a, b) => b.likes - a.likes);
+  // // Date
+  // photographerPics.sort((a, b) => new Date(a.date) - new Date(b.date));
+  // // Title
+  // photographerPics.sort((a, b) => (a.title > b.title ? 1 : -1));
+  // //
 
   return photographerPics;
 }
-
-// getPhotographerPics();
 
 // ====== Creation HTML (Pics) ======
 
@@ -154,11 +150,80 @@ async function displayPics(photographer) {
   });
 }
 
-// === Récupère les datas pour éxécuter la fonction ===
+// === Récupère les datas avant l'éxécution de la fonction ===
 async function init() {
   const photographerPics = await getPhotographerPics(); // data via pic ou OnePhotographers
   displayPics(photographerPics);
+  // likeOnePic();
 }
 init();
+
+// ====== Likes A Pics (without Saving) ======
+async function likeOnePic() {
+  // const photographerPics = await getPhotographerPics();
+  // console.log(photographerPics);
+  //
+  // const likeDiv = document.getElementsByClassName("infoPics-right");
+  // //
+  // likeDiv.addEventListener("click", (e) => {
+  //   e.preventDefault();
+  //   console.log("click");
+  // });
+}
+
+likeOnePic();
+
+// ====== Filter  ======
+
+async function sortPhotographerPics() {
+  // Fetch in phototographers.json
+  const response = await fetch("./data/photographers.json", {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  const photographers = await response.json();
+
+  // Selection photographer Pics
+  const photographerPics = photographers.media.filter(
+    (element) => element.photographerId === parseInt(idPhotographer)
+  );
+
+  // Filter Button
+  const filterButton = document.querySelector(".dropbtn");
+
+  // Filter Pics When Change =>
+  filterButton.addEventListener("change", () => {
+    // New Filter Value
+    // console.log(filterButton.value);
+
+    // Vide l'ancienne liste
+    const conteneurPics = document.querySelector(".conteneur-pics");
+    conteneurPics.innerHTML = "";
+
+    // == Réaffiche en fonction du nouveau Filtre ==
+
+    // Popularity (likes Number)
+    if (filterButton.value === "likes") {
+      photographerPics.sort((a, b) => b.likes - a.likes);
+      displayPics(photographerPics);
+    }
+    // Date (new - older)
+    if (filterButton.value === "date") {
+      photographerPics.sort((a, b) => new Date(b.date) - new Date(a.date));
+      console.log(photographerPics);
+      displayPics(photographerPics);
+    }
+    // Title (Abc)
+    if (filterButton.value === "name") {
+      photographerPics.sort((a, b) => (a.title > b.title ? 1 : -1));
+      displayPics(photographerPics);
+    }
+  });
+}
+
+sortPhotographerPics();
 
 // ====== Modal LightBox for Pics  ======

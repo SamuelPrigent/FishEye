@@ -4,10 +4,18 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <!-- Link Font -->
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <!-- Link Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/5f5fe7de0e.js"
+      defer
+      crossorigin="anonymous"
+    ></script>
+
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -29,8 +37,19 @@
       <!-- Option de filtre -->
       <div class="conteneur-filtre">
         <div>Trier par</div>
-        <div class="button-filtre">Popularité</div>
+        <!-- Filtre button -->
+        <select class="dropbtn" name="manufactuer" id="manufactuer">
+          <option class="dropbtn-content" value="likes">Popularité</option>
+          <option class="dropbtn-content" value="date">Date</option>
+          <option class="dropbtn-content" value="name">Nom</option>
+        </select>
+        <div
+          id="filterIcon"
+          class="fas fa-chevron-down icon-position"
+          role="button"
+        ></div>
       </div>
+
       <!-- Pics -->
       <div class="conteneur-pics"></div>
       <!-- Bottom Right Info -->
