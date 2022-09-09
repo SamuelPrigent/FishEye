@@ -31,7 +31,7 @@ function picsFactory(data) {
     const infoLeft = document.createElement("div");
     // Info right
     const infoRight = document.createElement("div");
-    infoRight.classList.add("infoPics-right");
+    infoRight.classList.add("infoPicsRight");
 
     // Titre
     const title = document.createElement("div");
@@ -39,9 +39,13 @@ function picsFactory(data) {
     // Likes number
     const likesNumber = document.createElement("div");
     likesNumber.innerText = `${data.likes}`;
+    likesNumber.classList.add("likesNumber");
+
     // Likes Icon
     const likesIcon = document.createElement("div");
-    likesIcon.innerText = "♥︎";
+    likesIcon.classList.add("fa-regular");
+    likesIcon.classList.add("fa-heart");
+    likesIcon.classList.add("heart-icon");
 
     // Structure
     info.appendChild(infoLeft);

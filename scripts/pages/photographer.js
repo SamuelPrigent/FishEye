@@ -74,6 +74,12 @@ async function getUserHeader() {
   // On inject à droite
   const headerRight = document.getElementById("headerRight");
   headerRight.appendChild(rightDiv);
+
+  // === MODAL CONTACT ===
+
+  // Injecter le nom dans le header du formulaire
+  const photographerName = document.getElementById("modal-photographer-name");
+  photographerName.innerText = `${data.name}`;
 }
 
 getUserHeader();
@@ -160,15 +166,65 @@ init();
 
 // ====== Likes A Pics (without Saving) ======
 async function likeOnePic() {
-  // const photographerPics = await getPhotographerPics();
-  // console.log(photographerPics);
-  //
-  // const likeDiv = document.getElementsByClassName("infoPics-right");
-  // //
-  // likeDiv.addEventListener("click", (e) => {
-  //   e.preventDefault();
-  //   console.log("click");
+  // Attendre la création de l'HTML
+  await getPhotographerPics();
+  let likesButton = document.querySelector(".infoPicsRight");
+
+  // // ==== Like / Unlike ====
+  // likesButton.addEventListener("click", () => {
+  //   let likeDiv = document.querySelector(".likesNumber"); // emplacement du chiffre
+  //   let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
+  //   const likeIcon = document.querySelector(".heart-icon");
+
+  //   // Add Like
+  //   if (likeIcon.classList.contains("fa-regular")) {
+  //     likeIcon.classList.remove("fa-regular");
+  //     likeIcon.classList.add("fa-solid");
+  //     likeIcon.classList.add("like-animation");
+  //     let newValue = likeValue + 1;
+  //     likeDiv.innerText = newValue;
+  //     // console.log(newValue);
+  //   }
+  //   // Remove Like
+  //   else {
+  //     likeIcon.classList.remove("fa-solid");
+  //     likeIcon.classList.add("fa-regular");
+  //     likeIcon.classList.add("like-animation");
+  //     let newValue = likeValue - 1;
+  //     likeDiv.innerText = newValue;
+  //     // console.log(newValue);
+  //   }
   // });
+
+  document.querySelectorAll(".infoPicsRight").forEach((elem) =>
+    elem.addEventListener("click", () => {
+      // ==== Like / Unlike ====
+      // console.log(elem); // Elem target chaque element mais pas les query selector
+
+      let likeDiv = document.querySelector(".likesNumber"); // emplacement du chiffre
+      let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
+      let likeIcon = document.querySelector(".heart-icon");
+
+      // Add Like
+      if (likeIcon.classList.contains("fa-regular")) {
+        likeIcon.classList.remove("fa-regular");
+        likeIcon.classList.add("fa-solid");
+        likeIcon.classList.add("like-animation");
+        let newValue = likeValue + 1;
+        likeDiv.innerText = newValue;
+        // console.log(newValue);
+      }
+      // Remove Like
+      else {
+        likeIcon.classList.remove("fa-solid");
+        likeIcon.classList.add("fa-regular");
+        likeIcon.classList.add("like-animation");
+        let newValue = likeValue - 1;
+        likeDiv.innerText = newValue;
+        // console.log(newValue);
+      }
+    })
+  );
 }
 
 likeOnePic();
@@ -209,17 +265,19 @@ async function sortPhotographerPics() {
     if (filterButton.value === "likes") {
       photographerPics.sort((a, b) => b.likes - a.likes);
       displayPics(photographerPics);
+      likeOnePic(); // Recall de la fonction like
     }
     // Date (new - older)
     if (filterButton.value === "date") {
       photographerPics.sort((a, b) => new Date(b.date) - new Date(a.date));
-      console.log(photographerPics);
       displayPics(photographerPics);
+      likeOnePic(); // Recall de la fonction like
     }
     // Title (Abc)
     if (filterButton.value === "name") {
       photographerPics.sort((a, b) => (a.title > b.title ? 1 : -1));
       displayPics(photographerPics);
+      likeOnePic(); // Recall de la fonction like
     }
   });
 }
@@ -227,3 +285,7 @@ async function sortPhotographerPics() {
 sortPhotographerPics();
 
 // ====== Modal LightBox for Pics  ======
+
+//
+
+// ====== Modal Contact ======
