@@ -17,11 +17,22 @@ function picsFactory(data) {
       mainDiv.appendChild(img);
     }
     if (data.video) {
-      const video = document.createElement("mp4");
+      const video = document.createElement("video");
       const link = `assets/photographers-pics/${data.photographerId}/${data.video}`;
       video.setAttribute("src", link);
       video.classList.add("imgPicsList");
       mainDiv.appendChild(video);
+      // Auto play vidéo
+      video.autoplay = true;
+      video.loop = true;
+      // Add VIDEO ICON
+      const centerIcon = document.createElement("div");
+      centerIcon.classList.add("video-icon-position");
+      const videoIcon = document.createElement("div");
+      videoIcon.classList.add("fa-solid");
+      videoIcon.classList.add("fa-video");
+      mainDiv.appendChild(centerIcon);
+      centerIcon.appendChild(videoIcon);
     }
     // Info div (title + likes)
     const info = document.createElement("div");

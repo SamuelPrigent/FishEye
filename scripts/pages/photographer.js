@@ -199,7 +199,10 @@ async function likeOnePic() {
   document.querySelectorAll(".infoPicsRight").forEach((elem) =>
     elem.addEventListener("click", () => {
       // ==== Like / Unlike ====
-      // console.log(elem); // Elem target chaque element mais pas les query selector
+      // console.log(elem); // Elem target chaque element
+
+      let likeDivTest = document.querySelectorAll(".likesNumber"); // emplacement du chiffre
+      console.log(likeDivTest);
 
       let likeDiv = document.querySelector(".likesNumber"); // emplacement du chiffre
       let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre

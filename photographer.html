@@ -65,18 +65,32 @@
           </div>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form id="form-contact">
           <!-- Champs du formulaire  -->
-          <label for="first">Prénom</label>
-          <input class="form-text" type="text" id="first" name="first" />
-          <label for="last">Nom</label>
-          <input class="form-text" type="text" id="last" name="last" />
-          <label for="email">Email</label>
-          <input class="form-text" type="email" id="email" name="email" />
-          <label for="msg">Message</label>
-          <textarea class="form-text-msg" id="msg" name="msg"> </textarea>
+          <div class="formData">
+            <label for="first">Prénom</label>
+            <input class="form-text" type="text" id="first" name="first" />
+          </div>
+          <div class="formData">
+            <label for="last">Nom</label>
+            <input class="form-text" type="text" id="last" name="last" />
+          </div>
+
+          <div class="formData">
+            <label for="email">Email</label>
+            <input class="form-text" type="email" id="email" name="email" />
+          </div>
+          <div class="formData">
+            <label for="msg">Message</label>
+            <textarea class="form-text-msg" id="msgText" name="msg"> </textarea>
+          </div>
           <!-- Submit Form  -->
-          <button class="modal-contact_button">Envoyer</button>
+          <input
+            type="submit"
+            id="submitButton"
+            class="modal-contact_button"
+            value="Envoyer"
+          />
         </form>
       </div>
     </div>

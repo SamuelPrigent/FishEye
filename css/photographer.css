@@ -56,7 +56,7 @@
 .modal header {
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 29px;
 }
 
 .modal header img {
@@ -75,7 +75,7 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 23px;
+  font-size: 21px;
   margin-bottom: 4px;
 }
 
@@ -84,25 +84,32 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
 }
 
-form input {
+.form-text {
   width: 95.5%;
   margin: auto;
-  margin-bottom: 6px;
   height: 27px;
   border: none;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 19px;
   padding: 10px;
   outline: none !important;
-  border: 3px solid rgba(85, 85, 85, 0);
+  border: 2.5px solid rgba(85, 85, 85, 0);
+  font-family: "DM Sans", sans-serif;
 }
 
-input:focus {
-  border: 3px solid #555;
+form label {
+  margin-top: 6px;
 }
+
+/* input:focus {
+  border: 2.5px solid #555;
+} */
+
+/* .form-text-msg:focus {
+  border: 2.5px solid #555;
+} */
 
 .form-text-msg {
   height: 100px;
@@ -112,14 +119,10 @@ input:focus {
   min-height: 50px;
   border-radius: 5px;
   outline: none !important;
-  border: 3px solid rgba(85, 85, 85, 0);
+  border: 2.5px solid rgba(85, 85, 85, 0);
   padding: 10px;
-  font-size: 20px;
+  font-size: 19px;
   font-family: "DM Sans", sans-serif;
-}
-
-.form-text-msg:focus {
-  border: 3px solid #555;
 }
 
 .modal-contact_button {
@@ -135,11 +138,11 @@ input:focus {
   margin-top: 18px;
   min-width: 161px;
   outline: none !important;
-  border: 3px solid #7083ff00;
+  border: 2.5px solid #7083ff00;
 }
 
 .modal-contact_button:focus {
-  border: 3px solid #7083ff;
+  border: 2.5px solid #7083ff;
 }
 
 /* ==== Header Photographe === */
@@ -197,6 +200,7 @@ input:focus {
 
 .PicsCard {
   border: 0px solid black;
+  position: relative;
 }
 
 .imgPicsList {
@@ -217,6 +221,23 @@ input:focus {
 }
 
 .infoPics-left {
+}
+
+.video-icon-position {
+  user-select: none;
+  font-size: 15px;
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  color: #650000;
+  color: #ffffffe4;
+  background-color: #000000a4;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 /* === Like Button Div === */
@@ -328,4 +349,43 @@ select {
 .dropbtn:focus {
   border: none;
   outline: none;
+}
+
+/* Forms Error Style */
+
+/* Besoin de JS et déclenchement d'erreur pour fonctionner */
+.formData[data-error]::after {
+  content: attr(data-error); /* Injecte le texte error en dessous */
+  font-size: 17px;
+  color: #ab313d;
+  display: block;
+  margin-top: 7px;
+  text-align: right;
+  line-height: 0.1;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+/* Applique bordure rouge sur l'input */
+.formData[data-error-visible="true"] .form-text {
+  border: 2.5px solid #e54858;
+}
+
+.formData[data-error-visible="true"] .form-text-msg {
+  border: 2.5px solid #e54858;
+}
+
+/* 
+input[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: red;
+} */
+
+.goodBorder {
+  border: 2.5px solid #76b2fff0;
 }
