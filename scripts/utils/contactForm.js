@@ -1,3 +1,5 @@
+// === MODAL 1 / Contact ===
+
 // Open Modal
 function displayModal() {
   const modal = document.getElementById("contact_modal");
@@ -10,6 +12,29 @@ function closeModal() {
   modal.style.display = "none";
   clearInputsStyle();
 }
+
+// === MODAL 2 / Confirmation ===
+
+// Open Modal
+function displayModal2() {
+  const modal = document.getElementById("contact_modal2");
+  modal.style.display = "block";
+}
+
+// Close Modal
+function closeModal2() {
+  const modal = document.getElementById("contact_modal2");
+  modal.style.display = "none";
+  clearInputsStyle();
+}
+
+// Close Confirmation with click out the box
+const ClickOut = document
+  .getElementById("contact_modal2")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    closeModal2();
+  });
 
 // Const de vérification d'inputs
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
@@ -160,7 +185,6 @@ const checkMsg = document
         "data-error",
         "Veuillez écrire un message."
       );
-      //   msgText.classList.remove("goodBorder");
       msgTextValidationData = false;
     }
 
@@ -170,7 +194,6 @@ const checkMsg = document
         "data-error",
         "Vous devez entrer 7 caractères ou plus."
       );
-      //   msgText.classList.remove("goodBorder");
       msgTextValidationData = false;
     }
 
@@ -295,7 +318,6 @@ function validateForm() {
       "data-error",
       "Veuillez écrire un message."
     );
-    msgText.classList.remove("goodBorder");
     msgTextValidationData = false;
   }
 
@@ -305,7 +327,6 @@ function validateForm() {
       "data-error",
       "Vous devez entrer 7 caractères ou plus."
     );
-    msgText.classList.remove("goodBorder");
     msgTextValidationData = false;
   }
 
@@ -378,7 +399,7 @@ const checkAll = document
       // ==== Enclencher Modal de remmerciement ====
 
       closeModal(); // Close Modal
-      //   openModal2(); // Modal de Confirmation
+      displayModal2(); // Modal de Confirmation
 
       // Texte du modal de Confirmation
       //   modalBody2.textContent = "Merci pour votre inscription " + first.value;

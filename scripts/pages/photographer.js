@@ -159,78 +159,41 @@ async function displayPics(photographer) {
 // === Récupère les datas avant l'éxécution de la fonction ===
 async function init() {
   const photographerPics = await getPhotographerPics(); // data via pic ou OnePhotographers
+  // console.log(photographerPics);
+
   displayPics(photographerPics);
   // likeOnePic();
 }
 init();
 
 // ====== Likes A Pics (without Saving) ======
-async function likeOnePic() {
+async function likeOnePic(id) {
   // Attendre la création de l'HTML
   await getPhotographerPics();
-  let likesButton = document.querySelector(".infoPicsRight");
 
-  // // ==== Like / Unlike ====
-  // likesButton.addEventListener("click", () => {
-  //   let likeDiv = document.querySelector(".likesNumber"); // emplacement du chiffre
-  //   let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
-  //   const likeIcon = document.querySelector(".heart-icon");
+  // ==== Let DOM Elements ====
+  let likeDiv = document.querySelector(`#likesNumber${id}`); // emplacement du chiffre
+  let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
+  let likeIcon = document.querySelector(`#heart-icon${id}`);
+  //
 
-  //   // Add Like
-  //   if (likeIcon.classList.contains("fa-regular")) {
-  //     likeIcon.classList.remove("fa-regular");
-  //     likeIcon.classList.add("fa-solid");
-  //     likeIcon.classList.add("like-animation");
-  //     let newValue = likeValue + 1;
-  //     likeDiv.innerText = newValue;
-  //     // console.log(newValue);
-  //   }
-  //   // Remove Like
-  //   else {
-  //     likeIcon.classList.remove("fa-solid");
-  //     likeIcon.classList.add("fa-regular");
-  //     likeIcon.classList.add("like-animation");
-  //     let newValue = likeValue - 1;
-  //     likeDiv.innerText = newValue;
-  //     // console.log(newValue);
-  //   }
-  // });
-
-  document.querySelectorAll(".infoPicsRight").forEach((elem) =>
-    elem.addEventListener("click", () => {
-      // ==== Like / Unlike ====
-      // console.log(elem); // Elem target chaque element
-
-      let likeDivTest = document.querySelectorAll(".likesNumber"); // emplacement du chiffre
-      console.log(likeDivTest);
-
-      let likeDiv = document.querySelector(".likesNumber"); // emplacement du chiffre
-      let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
-      let likeIcon = document.querySelector(".heart-icon");
-
-      // Add Like
-      if (likeIcon.classList.contains("fa-regular")) {
-        likeIcon.classList.remove("fa-regular");
-        likeIcon.classList.add("fa-solid");
-        likeIcon.classList.add("like-animation");
-        let newValue = likeValue + 1;
-        likeDiv.innerText = newValue;
-        // console.log(newValue);
-      }
-      // Remove Like
-      else {
-        likeIcon.classList.remove("fa-solid");
-        likeIcon.classList.add("fa-regular");
-        likeIcon.classList.add("like-animation");
-        let newValue = likeValue - 1;
-        likeDiv.innerText = newValue;
-        // console.log(newValue);
-      }
-    })
-  );
+  // Add Like
+  if (likeIcon.classList.contains("fa-regular")) {
+    likeIcon.classList.remove("fa-regular");
+    likeIcon.classList.add("fa-solid");
+    likeIcon.classList.add("like-animation");
+    let newValue = likeValue + 1;
+    likeDiv.innerText = newValue;
+    // console.log("Add Like =>", newValue);
+  } else {
+    likeIcon.classList.remove("fa-solid");
+    likeIcon.classList.add("fa-regular");
+    likeIcon.classList.add("like-animation");
+    let newValue = likeValue - 1;
+    likeDiv.innerText = newValue;
+    // console.log("Remove Like =>", newValue);
+  }
 }
-
-likeOnePic();
 
 // ====== Filter  ======
 
@@ -268,19 +231,16 @@ async function sortPhotographerPics() {
     if (filterButton.value === "likes") {
       photographerPics.sort((a, b) => b.likes - a.likes);
       displayPics(photographerPics);
-      likeOnePic(); // Recall de la fonction like
     }
     // Date (new - older)
     if (filterButton.value === "date") {
       photographerPics.sort((a, b) => new Date(b.date) - new Date(a.date));
       displayPics(photographerPics);
-      likeOnePic(); // Recall de la fonction like
     }
     // Title (Abc)
     if (filterButton.value === "name") {
       photographerPics.sort((a, b) => (a.title > b.title ? 1 : -1));
       displayPics(photographerPics);
-      likeOnePic(); // Recall de la fonction like
     }
   });
 }
@@ -288,7 +248,3 @@ async function sortPhotographerPics() {
 sortPhotographerPics();
 
 // ====== Modal LightBox for Pics  ======
-
-//
-
-// ====== Modal Contact ======

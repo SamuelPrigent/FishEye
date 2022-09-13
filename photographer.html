@@ -67,20 +67,20 @@
         </header>
         <form id="form-contact">
           <!-- Champs du formulaire  -->
-          <div class="formData">
+          <div class="formData" data-error-visible="false">
             <label for="first">Prénom</label>
             <input class="form-text" type="text" id="first" name="first" />
           </div>
-          <div class="formData">
+          <div class="formData" data-error-visible="false">
             <label for="last">Nom</label>
             <input class="form-text" type="text" id="last" name="last" />
           </div>
 
-          <div class="formData">
+          <div class="formData" data-error-visible="false">
             <label for="email">Email</label>
             <input class="form-text" type="email" id="email" name="email" />
           </div>
-          <div class="formData">
+          <div class="formData" data-error-visible="false">
             <label for="msg">Message</label>
             <textarea class="form-text-msg" id="msgText" name="msg"> </textarea>
           </div>
@@ -93,10 +93,47 @@
           />
         </form>
       </div>
+      <!-- fin modal inside div -->
     </div>
+    <!-- fin modal -->
+    <div id="contact_modal2">
+      <div class="modal2">
+        <div onclick="closeModal2()">
+          <i class="fa-solid fa-xmark modal2-cross"></i>
+        </div>
+        <div class="modal2-msg">
+          <i class="fa-regular fa-circle-check validation-icon"></i>
+          <div>Message envoyé</div>
+        </div>
+      </div>
+      <!-- fin modal inside div -->
+    </div>
+    <!-- fin modal -->
+   <!-- fin modal -->
+   <div id="lightbox_modal">
+    <div class="lightbox">
+      <div onclick="closeLightbox()">
+        <i class="fa-solid fa-xmark lightbox-cross"></i>
+      </div>
+      <div>
+        <i class="fa-solid fa-chevron-right lightbox-arrow-right"></i>
+      </div>
+      <div>
+        <i class="fa-solid fa-chevron-left lightbox-arrow-left"></i>
+      </div>
+      <img class="lightbox-img">
+    </img>
+      <div class="lightbox-txt">Text</div>
+    </div>
+    </div>
+    <!-- fin modal inside div -->
+  </div>
+  <!-- fin modal -->
+
     <!-- JS -->
     <script src="/scripts/factories/photographerPics.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

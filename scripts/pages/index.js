@@ -1,27 +1,4 @@
-// async function getPhotographers() {
-//   // Données récupérées dans le json
-//   try {
-//     const response = await fetch("./data/photographers.json", {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//     });
-
-//     const photographers = await response.json();
-//     // console.log("Photographers =", photographers);
-
-//     return photographers;
-//   } catch (error) {
-//     console.error(error);
-//   }
-
-//   // Retourne le tableau photographers
-//   return {
-//     photographers: [...photographers],
-//   };
-// }
-
+//
 async function getPhotographers() {
   // Données récupérées dans le json
   const response = await fetch("./data/photographers.json", {

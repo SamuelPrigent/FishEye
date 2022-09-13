@@ -43,7 +43,7 @@
   justify-content: space-between;
   padding: 35px;
   margin: 50px auto 50px;
-  width: 40%;
+  width: 36%;
   height: auto;
 }
 
@@ -208,6 +208,7 @@ form label {
   width: 100%;
   border-radius: 5px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .infoPics {
@@ -388,4 +389,143 @@ input[data-error]::after {
 
 .goodBorder {
   border: 2.5px solid #76b2fff0;
+}
+
+.modal2 img {
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+#contact_modal2 {
+  display: none;
+  position: fixed;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.387);
+}
+
+.modal2 {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #c0ffc0;
+  flex-direction: column;
+  padding: 20px;
+  margin: 50px auto 50px;
+  width: 305px;
+  position: relative;
+  animation-name: modalopen;
+  animation-duration: 250ms;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal2-msg {
+  display: flex;
+  gap: 10px;
+  color: black;
+  font-size: 19px;
+}
+
+.modal2-cross {
+  font-size: 24px;
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.validation-icon {
+  font-size: 29px;
+  color: #398d4e;
+  top: -2px;
+  position: relative;
+}
+
+/* LightBox */
+#lightbox_modal {
+  display: none;
+  position: fixed;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: white;
+}
+
+.lightbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin: auto;
+  height: 85vh;
+  aspect-ratio: 1.16/1;
+  position: relative;
+}
+
+.lightbox-img {
+  /* border: 2px solid blue; */
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #e1f7ff;
+  object-fit: cover;
+  aspect-ratio: 1.16/1;
+}
+
+.lightbox-txt {
+  /* border: 2px solid RED; */
+  width: 100%;
+  height: 40px;
+  margin-top: 9px;
+  font-size: 18px;
+  color: #650000;
+}
+
+.lightbox-cross {
+  font-size: 45px;
+  position: absolute;
+  top: -13px;
+  right: -52px;
+  cursor: pointer;
+  color: #650000;
+}
+
+.lightbox-arrow-right {
+  font-size: 43px;
+  position: absolute;
+  top: 45%;
+  right: -55px;
+  cursor: pointer;
+  color: #650000;
+}
+
+.lightbox-arrow-left {
+  font-size: 43px;
+  position: absolute;
+  top: 45%;
+  left: -55px;
+  cursor: pointer;
+  color: #650000;
 }

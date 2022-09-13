@@ -1,13 +1,14 @@
 // Function Création de Card
 function picsFactory(data) {
   //
-  //   console.log(data);
+  // console.log(data);
   //
   // Création de l'html
   function createPicsCard() {
     // Global Div
     const mainDiv = document.createElement("div");
     mainDiv.classList.add("PicsCard");
+    mainDiv.setAttribute("id", `${data.photographerId}-${data.id}`); // création d'ID unique
     // Media
     if (data.image) {
       const img = document.createElement("img");
@@ -15,6 +16,8 @@ function picsFactory(data) {
       img.setAttribute("src", link);
       img.classList.add("imgPicsList");
       mainDiv.appendChild(img);
+      // === Click to Open LightBox ===
+      img.setAttribute("onclick", `displayLightbox(${data.id})`); // Call lightbox en fonction de l'id
     }
     if (data.video) {
       const video = document.createElement("video");
@@ -33,6 +36,8 @@ function picsFactory(data) {
       videoIcon.classList.add("fa-video");
       mainDiv.appendChild(centerIcon);
       centerIcon.appendChild(videoIcon);
+      // === Click to Open LightBox ===
+      video.setAttribute("onclick", `displayLightbox(${data.id})`); // Call lightbox en fonction de l'id
     }
     // Info div (title + likes)
     const info = document.createElement("div");
@@ -43,6 +48,8 @@ function picsFactory(data) {
     // Info right
     const infoRight = document.createElement("div");
     infoRight.classList.add("infoPicsRight");
+    infoRight.setAttribute("id", `like-${data.id}`); // id unique ?
+    infoRight.setAttribute("onclick", `likeOnePic(${data.id})`); // Call like(id) avec paramètre personnalisé
 
     // Titre
     const title = document.createElement("div");
@@ -51,12 +58,14 @@ function picsFactory(data) {
     const likesNumber = document.createElement("div");
     likesNumber.innerText = `${data.likes}`;
     likesNumber.classList.add("likesNumber");
+    likesNumber.setAttribute("id", `likesNumber${data.id}`); // ID Unique - likesNumber
 
     // Likes Icon
     const likesIcon = document.createElement("div");
     likesIcon.classList.add("fa-regular");
     likesIcon.classList.add("fa-heart");
     likesIcon.classList.add("heart-icon");
+    likesIcon.setAttribute("id", `heart-icon${data.id}`); // ID Unique - Heart Icon
 
     // Structure
     info.appendChild(infoLeft);
