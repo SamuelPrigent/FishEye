@@ -28,7 +28,7 @@ function picsFactory(data) {
       // Auto play vidéo
       video.autoplay = true;
       video.loop = true;
-      // Add VIDEO ICON
+      // Add VIDEO ICON (top left)
       const centerIcon = document.createElement("div");
       centerIcon.classList.add("video-icon-position");
       const videoIcon = document.createElement("div");

@@ -20,6 +20,13 @@
   min-width: 161px;
 }
 
+.contact_button:hover {
+  /* background-color: #db8876;
+  color: black; */
+  background-color: #2980b9;
+  color: white;
+}
+
 /* Modal Contact */
 
 #contact_modal {
@@ -288,6 +295,7 @@ form label {
   justify-content: center;
   align-items: center;
   gap: 44px;
+  width: 210px;
 }
 
 /* === Filtres ===  */
@@ -472,6 +480,19 @@ input[data-error]::after {
   background-color: white;
 }
 
+#lightbox_modal2 {
+  display: none;
+  position: fixed;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: white;
+}
+
 .lightbox {
   display: flex;
   flex-direction: column;
@@ -482,6 +503,12 @@ input[data-error]::after {
   height: 85vh;
   aspect-ratio: 1.16/1;
   position: relative;
+}
+
+.lightbox-zero {
+  height: 0%;
+  width: 0%;
+  display: none;
 }
 
 .lightbox-img {
@@ -505,6 +532,15 @@ input[data-error]::after {
 }
 
 .lightbox-txt {
+  /* border: 2px solid RED; */
+  width: 100%;
+  height: 40px;
+  margin-top: 9px;
+  font-size: 18px;
+  color: #650000;
+}
+
+.lightbox-text-video {
   /* border: 2px solid RED; */
   width: 100%;
   height: 40px;

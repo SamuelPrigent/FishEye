@@ -102,7 +102,7 @@ async function getBottomInfo() {
   // Div Cible
   const bottomInfo = document.querySelector(".bottomRightInfo");
   bottomInfo.innerHTML = `
-  <div>${totalLikes} ♥︎</div>
+  <div class="total-likes">${totalLikes} ♥︎</div>
   <div>${data.price}€ / jour</div>
   `;
 }
@@ -174,6 +174,8 @@ async function likeOnePic(id) {
   // ==== Let DOM Elements ====
   let likeDiv = document.querySelector(`#likesNumber${id}`); // emplacement du chiffre
   let likeValue = parseInt(likeDiv.innerHTML); // parse le "" => Nombre
+  let likeTotalDiv = document.querySelector(`.total-likes`);
+  let likeTotalValue = parseInt(likeTotalDiv.innerHTML); // parse le "" => Nombre
   let likeIcon = document.querySelector(`#heart-icon${id}`);
   //
 
@@ -183,6 +185,8 @@ async function likeOnePic(id) {
     likeIcon.classList.add("fa-solid");
     likeIcon.classList.add("like-animation");
     let newValue = likeValue + 1;
+    let newTotalValue = likeTotalValue + 1;
+    likeTotalDiv.innerText = `${newTotalValue} ♥︎`;
     likeDiv.innerText = newValue;
     // console.log("Add Like =>", newValue);
   } else {
@@ -190,6 +194,8 @@ async function likeOnePic(id) {
     likeIcon.classList.add("fa-regular");
     likeIcon.classList.add("like-animation");
     let newValue = likeValue - 1;
+    let newTotalValue = likeTotalValue - 1;
+    likeTotalDiv.innerText = `${newTotalValue} ♥︎`;
     likeDiv.innerText = newValue;
     // console.log("Remove Like =>", newValue);
   }
