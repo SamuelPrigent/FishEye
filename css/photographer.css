@@ -494,6 +494,16 @@ input[data-error]::after {
   aspect-ratio: 1.16/1;
 }
 
+.lightbox-video {
+  /* border: 2px solid blue; */
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #e1f7ff;
+  object-fit: cover;
+  aspect-ratio: 1.16/1;
+}
+
 .lightbox-txt {
   /* border: 2px solid RED; */
   width: 100%;
