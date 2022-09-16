@@ -9,7 +9,7 @@ function picsFactory(data) {
     const mainDiv = document.createElement("div");
     mainDiv.classList.add("PicsCard");
     mainDiv.setAttribute("id", `${data.photographerId}-${data.id}`); // création d'ID unique
-    // Media
+    //
     if (data.image) {
       const img = document.createElement("img");
       const link = `assets/photographers-pics/${data.photographerId}/${data.image}`;
@@ -17,7 +17,8 @@ function picsFactory(data) {
       img.classList.add("imgPicsList");
       mainDiv.appendChild(img);
       // === Click to Open LightBox ===
-      img.setAttribute("onclick", `displayLightboxImg(${data.id})`); // Call lightbox en fonction de l'id
+      // img.setAttribute("onclick", `displayLightboxImg(${data.id})`); // Call lightbox en fonction de l'id
+      img.setAttribute("onclick", `displayLightboxMedia(${data.id})`); // Call lightbox en fonction de l'id
     }
     if (data.video) {
       const video = document.createElement("video");
@@ -37,8 +38,10 @@ function picsFactory(data) {
       mainDiv.appendChild(centerIcon);
       centerIcon.appendChild(videoIcon);
       // === Click to Open LightBox ===
-      video.setAttribute("onclick", `displayLightboxVideo(${data.id})`); // Call lightbox en fonction de l'id
+      // video.setAttribute("onclick", `displayLightboxVideo(${data.id})`); // Call lightbox en fonction de l'id
+      video.setAttribute("onclick", `displayLightboxMedia(${data.id})`); // Call lightbox en fonction de l'id
     }
+
     // Info div (title + likes)
     const info = document.createElement("div");
     info.classList.add("infoPics");

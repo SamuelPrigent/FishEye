@@ -162,14 +162,14 @@ async function init() {
   // console.log(photographerPics);
 
   displayPics(photographerPics);
-  // likeOnePic();
 }
 init();
 
 // ====== Likes A Pics (without Saving) ======
 async function likeOnePic(id) {
   // Attendre la création de l'HTML
-  await getPhotographerPics();
+  const data = await getPhotographerPics();
+  console.log(data.filter((element) => element.id === id));
 
   // ==== Let DOM Elements ====
   let likeDiv = document.querySelector(`#likesNumber${id}`); // emplacement du chiffre
