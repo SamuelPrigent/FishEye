@@ -588,11 +588,11 @@ input[data-error]::after {
 .lightbox-media {
   /* border: 2px solid blue; */
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
   border-radius: 5px;
   background-color: #e1f7ff;
   object-fit: cover;
-  aspect-ratio: 1.16/1;
+  /* aspect-ratio: 1.16/1; */
 }
 
 #lightbox_modal3 {
@@ -608,7 +608,7 @@ input[data-error]::after {
   background-color: white;
 }
 
-.lightbox-txt-media {
+.lightbox-text-media {
   /* border: 2px solid RED; */
   width: 100%;
   height: 40px;

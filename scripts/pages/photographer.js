@@ -169,7 +169,7 @@ init();
 async function likeOnePic(id) {
   // Attendre la création de l'HTML
   const data = await getPhotographerPics();
-  console.log(data.filter((element) => element.id === id));
+  // console.log(data.filter((element) => element.id === id));
 
   // ==== Let DOM Elements ====
   let likeDiv = document.querySelector(`#likesNumber${id}`); // emplacement du chiffre
