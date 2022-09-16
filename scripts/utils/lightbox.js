@@ -3,13 +3,13 @@
 // Open Lightbox
 async function displayLightboxMedia(id) {
   await getMedia(id);
-  const modal = document.getElementById("lightbox_modal3");
+  const modal = document.getElementById("lightbox_modal");
   modal.style.display = "flex";
 }
 
 // Close Lightbox
-function closeLightbox3() {
-  const modal = document.getElementById("lightbox_modal3");
+function closeLightbox() {
+  const modal = document.getElementById("lightbox_modal");
   modal.style.display = "none";
 }
 
