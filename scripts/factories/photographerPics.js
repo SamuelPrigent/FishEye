@@ -1,28 +1,35 @@
 // Function Création de Card
-function picsFactory(data) {
+function picsFactory(pictures) {
   //
-  // console.log(data);
+  // All Picture
+  // console.log("All pics", pictures);
   //
+
   // Création de l'html
-  function createPicsCard() {
+  function createPicsCard(index) {
+    // console.log("index of the pic",index);
+
     // Global Div
     const mainDiv = document.createElement("div");
     mainDiv.classList.add("PicsCard");
-    mainDiv.setAttribute("id", `${data.photographerId}-${data.id}`); // création d'ID unique
+    mainDiv.setAttribute(
+      "id",
+      `${pictures[index].photographerId}-${pictures[index].id}`
+    ); // création d'ID unique
     //
-    if (data.image) {
+    if (pictures[index].image) {
       const img = document.createElement("img");
-      const link = `assets/photographers-pics/${data.photographerId}/${data.image}`;
+      const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].image}`;
       img.setAttribute("src", link);
       img.classList.add("imgPicsList");
       mainDiv.appendChild(img);
       // === Click to Open LightBox ===
-      // img.setAttribute("onclick", `displayLightboxImg(${data.id})`); // Call lightbox en fonction de l'id
-      img.setAttribute("onclick", `displayLightboxMedia(${data.id})`); // Call lightbox en fonction de l'id
+      img.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // OLD CODE `displayLightboxMedia(${pictures[index].id})`
     }
-    if (data.video) {
+    if (pictures[index].video) {
       const video = document.createElement("video");
-      const link = `assets/photographers-pics/${data.photographerId}/${data.video}`;
+      const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].video}`;
       video.setAttribute("src", link);
       video.classList.add("imgPicsList");
       mainDiv.appendChild(video);
@@ -39,7 +46,7 @@ function picsFactory(data) {
       centerIcon.appendChild(videoIcon);
       // === Click to Open LightBox ===
       // video.setAttribute("onclick", `displayLightboxVideo(${data.id})`); // Call lightbox en fonction de l'id
-      video.setAttribute("onclick", `displayLightboxMedia(${data.id})`); // Call lightbox en fonction de l'id
+      video.setAttribute("onclick", `displayLightboxMedia(${index})`); // Call lightbox en fonction de l'id
     }
 
     // Info div (title + likes)
@@ -51,24 +58,25 @@ function picsFactory(data) {
     // Info right
     const infoRight = document.createElement("div");
     infoRight.classList.add("infoPicsRight");
-    infoRight.setAttribute("id", `like-${data.id}`); // id unique ?
-    infoRight.setAttribute("onclick", `likeOnePic(${data.id})`); // Call like(id) avec paramètre personnalisé
+    infoRight.setAttribute("id", `like-${pictures[index].id}`); // id unique ?
+    infoRight.setAttribute("onclick", `likeOnePic(${pictures[index].id})`); // Call like(id) avec paramètre personnalisé
 
     // Titre
     const title = document.createElement("div");
-    title.innerText = `${data.title}`;
+    title.innerText = `${pictures[index].title}`;
+    title.classList.add("infoPics-Text"); // pour cibler le texte via Query Selector All
     // Likes number
     const likesNumber = document.createElement("div");
-    likesNumber.innerText = `${data.likes}`;
+    likesNumber.innerText = `${pictures[index].likes}`;
     likesNumber.classList.add("likesNumber");
-    likesNumber.setAttribute("id", `likesNumber${data.id}`); // ID Unique - likesNumber
+    likesNumber.setAttribute("id", `likesNumber${pictures[index].id}`); // ID Unique - likesNumber
 
     // Likes Icon
     const likesIcon = document.createElement("div");
     likesIcon.classList.add("fa-regular");
     likesIcon.classList.add("fa-heart");
     likesIcon.classList.add("heart-icon");
-    likesIcon.setAttribute("id", `heart-icon${data.id}`); // ID Unique - Heart Icon
+    likesIcon.setAttribute("id", `heart-icon${pictures[index].id}`); // ID Unique - Heart Icon
 
     // Structure
     info.appendChild(infoLeft);

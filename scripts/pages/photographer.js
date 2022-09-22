@@ -143,24 +143,27 @@ async function getPhotographerPics() {
 // ====== Creation HTML (Pics) ======
 
 // === Create .forEach ===
-async function displayPics(photographer) {
-  // Div ou l'on place les Card
-  const picsSection = document.querySelector(".conteneur-pics");
+async function displayPics(photographerPics) {
+  const ConteneurPics = document.querySelector(".conteneur-pics"); // Div ou l'on place les Card
+  //
+  // Picture Index in the Array of photographerPics
+  let pictureIndex = 0;
+  // console.log("all  pics =", photographerPics);
 
-  // Each Object => 1 Card
-  photographer.forEach((data) => {
-    const picsModel = picsFactory(data); //
-    const photographerPics = picsModel.createPicsCard(); //
-    // injecte la card
-    picsSection.appendChild(photographerPics);
+  // forEach.Object => Create 1 Card
+  photographerPics.forEach((picture) => {
+    const CreatePic = picsFactory(photographerPics); // All pics
+    const NewPic = CreatePic.createPicsCard(pictureIndex); // Index for target one Picture
+    ConteneurPics.appendChild(NewPic); // Injecte la card
+    // Index of the Next Picture
+    // console.log("Max Index", pictureIndex); // Stock l'index max dans le local storage ? ou autre part ?
+    pictureIndex = pictureIndex + 1;
   });
 }
 
 // === Récupère les datas avant l'éxécution de la fonction ===
 async function init() {
-  const photographerPics = await getPhotographerPics(); // data via pic ou OnePhotographers
-  // console.log(photographerPics);
-
+  const photographerPics = await getPhotographerPics(); // All Pics
   displayPics(photographerPics);
 }
 init();
