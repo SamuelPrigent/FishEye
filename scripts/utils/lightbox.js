@@ -77,6 +77,23 @@ document
 // ====== Get Lightbox Media (img / video) after clic =====
 async function getMedia(index) {
   const data = await getPhotographerPics(); // GetPhotographersPics => puis on target via l'index
+
+  // Refresh List by Filter
+  const filterButton = document.querySelector(".dropbtn");
+
+  // Popularity (likes Number)
+  if (filterButton.value === "likes") {
+    data.sort((a, b) => b.likes - a.likes);
+  }
+  // Date (new - older)
+  if (filterButton.value === "date") {
+    data.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+  // Title (Abc)
+  if (filterButton.value === "name") {
+    data.sort((a, b) => (a.title > b.title ? 1 : -1));
+  }
+
   //   console.log("Pic Index =", index);
   localStorage.setItem("lightbox-index", index); // Stock in local storage l'index
 
