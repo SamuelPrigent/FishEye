@@ -504,6 +504,12 @@ input[data-error]::after {
   color: #650000;
 }
 
+/* Set invisible if its First or Last Picture */
+.lightbox-arrow-none {
+  opacity: 0;
+  display: none;
+}
+
 .lightbox-arrow-right {
   font-size: 43px;
   position: absolute;

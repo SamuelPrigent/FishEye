@@ -15,7 +15,7 @@ function closeLightbox() {
 
 // ===== KEYUP Lightbox Navigation =====
 
-// Escape => Close
+// Escape : Close
 document.addEventListener("keyup", (e) => {
   e.preventDefault;
   if (e.key === "Escape") {
@@ -24,24 +24,44 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-// Listen Arrow => Previous / Next // Utilisable seulement lorsque lightbox ouverte ???
+// Left : Previous / Right : Next
 document.addEventListener("keyup", (e) => {
+  // Dom elements // Var
+  const arrowLeft = document.querySelector(".lightbox-arrow-left");
+  const arrowRight = document.querySelector(".lightbox-arrow-right");
+  const index = parseInt(localStorage.getItem("lightbox-index"));
+  const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
+  let newIndexPrevious = index - 1;
+  let newIndexNext = index + 1;
+
   switch (e.keyCode) {
     case 37:
-      // Previous
-      const index1 = parseInt(localStorage.getItem("lightbox-index"));
-      if (index1 > 0) {
-        let newIndex1 = index1 - 1;
-        getMedia(newIndex1);
+      // Get Previous Media
+      if (index > 0) {
+        getMedia(newIndexPrevious);
       }
+      // Opacity 0 - Left Arrow / if First picture
+      if (newIndexPrevious == 0) {
+        arrowLeft.classList.add("lightbox-arrow-none");
+      }
+      // Opacity 1 - Right Arrow / if not Last picture
+      if (newIndexPrevious < indexMax) {
+        arrowRight.classList.remove("lightbox-arrow-none");
+      }
+
       break;
     case 39:
-      // Next
-      const index2 = parseInt(localStorage.getItem("lightbox-index"));
-      const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
-      if (index2 < indexMax) {
-        let newIndex2 = index2 + 1;
-        getMedia(newIndex2);
+      // Get Next Media
+      if (index < indexMax) {
+        getMedia(newIndexNext);
+      }
+      // Opacity 0 - Right Arrow - if Last picture
+      if (newIndexNext == indexMax) {
+        arrowRight.classList.add("lightbox-arrow-none");
+      }
+      // Opacity 1 - Left Arrow if not First picture
+      if (newIndexNext > 0) {
+        arrowLeft.classList.remove("lightbox-arrow-none");
       }
       break;
   }
@@ -53,11 +73,24 @@ document.addEventListener("keyup", (e) => {
 document
   .querySelector(".lightbox-arrow-left")
   .addEventListener("click", (e) => {
+    // Dom elements // Var
+    const arrowLeft = document.querySelector(".lightbox-arrow-left");
+    const arrowRight = document.querySelector(".lightbox-arrow-right");
+    const index = parseInt(localStorage.getItem("lightbox-index"));
+    const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
+    let newIndexPrevious = index - 1;
+
     // Previous
-    const index1 = parseInt(localStorage.getItem("lightbox-index"));
-    if (index1 > 0) {
-      let newIndex1 = index1 - 1;
-      getMedia(newIndex1);
+    if (index > 0) {
+      getMedia(newIndexPrevious);
+    }
+    // Opacity 0 - Left Arrow / if First picture
+    if (newIndexPrevious == 0) {
+      arrowLeft.classList.add("lightbox-arrow-none");
+    }
+    // Opacity 1 - Right Arrow / if not Last picture
+    if (newIndexPrevious < indexMax) {
+      arrowRight.classList.remove("lightbox-arrow-none");
     }
   });
 
@@ -65,20 +98,32 @@ document
 document
   .querySelector(".lightbox-arrow-right")
   .addEventListener("click", (e) => {
-    // Next
-    const index2 = parseInt(localStorage.getItem("lightbox-index"));
+    // Dom elements // Var
+    const arrowLeft = document.querySelector(".lightbox-arrow-left");
+    const arrowRight = document.querySelector(".lightbox-arrow-right");
+    const index = parseInt(localStorage.getItem("lightbox-index"));
     const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
-    if (index2 < indexMax) {
-      let newIndex2 = index2 + 1;
-      getMedia(newIndex2);
+    let newIndexNext = index + 1;
+
+    // Next
+    if (index < indexMax) {
+      getMedia(newIndexNext);
+    }
+    // Opacity 0 - Right Arrow - if Last picture
+    if (newIndexNext == indexMax) {
+      arrowRight.classList.add("lightbox-arrow-none");
+    }
+    // Opacity 1 - Left Arrow if not First picture
+    if (newIndexNext > 0) {
+      arrowLeft.classList.remove("lightbox-arrow-none");
     }
   });
 
 // ====== Get Lightbox Media (img / video) after clic =====
 async function getMedia(index) {
-  const data = await getPhotographerPics(); // GetPhotographersPics => puis on target via l'index
+  const data = await getPhotographerPics(); // AllPics => puis on target via index
 
-  // Refresh List by Filter
+  // == Refresh Index List by Filter ==
   const filterButton = document.querySelector(".dropbtn");
 
   // Popularity (likes Number)
@@ -97,10 +142,28 @@ async function getMedia(index) {
   //   console.log("Pic Index =", index);
   localStorage.setItem("lightbox-index", index); // Stock in local storage l'index
 
-  // L'ORDRE DATA NE CHANGE PAS AVEC LE FILTRE // COMMENT FAIRE ??
+  // Lightbow naviation Arrow Display
+  // Dom elements // Var
+  const arrowLeft = document.querySelector(".lightbox-arrow-left");
+  const arrowRight = document.querySelector(".lightbox-arrow-right");
+  const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
 
-  // Mettre un code en fonction de la value de filter button ?
+  // Left arrow
+  if (index == 0) {
+    arrowLeft.classList.add("lightbox-arrow-none");
+  }
+  if (index > 0) {
+    arrowLeft.classList.remove("lightbox-arrow-none");
+  }
+  // Right arrow
+  if (index == indexMax) {
+    arrowRight.classList.add("lightbox-arrow-none");
+  }
+  if (index < indexMax) {
+    arrowRight.classList.remove("lightbox-arrow-none");
+  }
 
+  // Get Media
   if (data[index].image) {
     // console.log("img");
     const mediaDiv = document.querySelector("#lightbox-media");
@@ -131,18 +194,3 @@ async function getMedia(index) {
   const mediaTitle = document.querySelector(".lightbox-text-media");
   mediaTitle.innerText = `${data[index].title}`;
 }
-
-// ======== SLIDE Lightbox ========
-async function lightboxIndex() {
-  const data = await getPhotographerPics();
-  document.querySelectorAll(".imgPicsList").forEach((link) =>
-    link.addEventListener("click", (e) => {
-      e.preventDefault;
-
-      // Listes des Object Images
-      console.log("Object List =", data); // Obtenir une nouvelle liste via filtre ???
-    })
-  );
-}
-
-lightboxIndex();
