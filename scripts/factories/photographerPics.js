@@ -25,7 +25,6 @@ function picsFactory(pictures) {
       mainDiv.appendChild(img);
       // === Click to Open LightBox ===
       img.setAttribute("onclick", `displayLightboxMedia(${index})`);
-      // OLD CODE `displayLightboxMedia(${pictures[index].id})`
     }
     if (pictures[index].video) {
       const video = document.createElement("video");
@@ -45,8 +44,7 @@ function picsFactory(pictures) {
       mainDiv.appendChild(centerIcon);
       centerIcon.appendChild(videoIcon);
       // === Click to Open LightBox ===
-      // video.setAttribute("onclick", `displayLightboxVideo(${data.id})`); // Call lightbox en fonction de l'id
-      video.setAttribute("onclick", `displayLightboxMedia(${index})`); // Call lightbox en fonction de l'id
+      video.setAttribute("onclick", `displayLightboxMedia(${index})`);
     }
 
     // Info div (title + likes)

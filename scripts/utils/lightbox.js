@@ -30,14 +30,19 @@ document.addEventListener("keyup", (e) => {
     case 37:
       // Previous
       const index1 = parseInt(localStorage.getItem("lightbox-index"));
-      let newIndex1 = index1 - 1;
-      getMedia(newIndex1);
+      if (index1 > 0) {
+        let newIndex1 = index1 - 1;
+        getMedia(newIndex1);
+      }
       break;
     case 39:
       // Next
       const index2 = parseInt(localStorage.getItem("lightbox-index"));
-      let newIndex2 = index2 + 1;
-      getMedia(newIndex2);
+      const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
+      if (index2 < indexMax) {
+        let newIndex2 = index2 + 1;
+        getMedia(newIndex2);
+      }
       break;
   }
 });
@@ -50,8 +55,10 @@ document
   .addEventListener("click", (e) => {
     // Previous
     const index1 = parseInt(localStorage.getItem("lightbox-index"));
-    let newIndex1 = index1 - 1;
-    getMedia(newIndex1);
+    if (index1 > 0) {
+      let newIndex1 = index1 - 1;
+      getMedia(newIndex1);
+    }
   });
 
 // Get Next Source + Right Arrow
@@ -60,21 +67,22 @@ document
   .addEventListener("click", (e) => {
     // Next
     const index2 = parseInt(localStorage.getItem("lightbox-index"));
-    let newIndex2 = index2 + 1;
-    getMedia(newIndex2);
+    const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
+    if (index2 < indexMax) {
+      let newIndex2 = index2 + 1;
+      getMedia(newIndex2);
+    }
   });
 
 // ====== Get Lightbox Media (img / video) after clic =====
 async function getMedia(index) {
   const data = await getPhotographerPics(); // GetPhotographersPics => puis on target via l'index
-  console.log("Pic Index =", index);
+  //   console.log("Pic Index =", index);
   localStorage.setItem("lightbox-index", index); // Stock in local storage l'index
 
-  // Image or Video ?
-  //   let type1 = data[index].image;
-  //   let type2 = data[index].video;
-  //   console.log("type1", type1);
-  //   console.log("type2", type2);
+  // L'ORDRE DATA NE CHANGE PAS AVEC LE FILTRE // COMMENT FAIRE ??
+
+  // Mettre un code en fonction de la value de filter button ?
 
   if (data[index].image) {
     // console.log("img");
@@ -84,7 +92,7 @@ async function getMedia(index) {
     // Create Img
     const newPic = document.createElement("img");
     newPic.setAttribute("src", link);
-    newPic.classList.add("createdMedia"); // Css
+    newPic.classList.add("createdMedia");
     mediaDiv.appendChild(newPic);
   }
   if (data[index].video) {
@@ -98,7 +106,7 @@ async function getMedia(index) {
     newVideo.autoplay = true;
     newVideo.loop = true;
     newVideo.controls = true;
-    newVideo.classList.add("createdMedia"); // Css
+    newVideo.classList.add("createdMedia");
     mediaDiv.appendChild(newVideo);
   }
 
@@ -115,21 +123,7 @@ async function lightboxIndex() {
       e.preventDefault;
 
       // Listes des Object Images
-      console.log("Object List =", data);
-
-      // Listes des liens Img
-      //   const picsList = Array.from(document.querySelectorAll(".imgPicsList")); // liste des liens (ou img)
-      //   const gallerySrc = picsList.map((picsList) =>
-      //     picsList.getAttribute("src")
-      //   );
-      //   console.log("Img list =", gallerySrc);
-
-      // Listes des Titres Img
-      //   const textList = Array.from(document.querySelectorAll(".infoPics-Text")); // liste des liens (ou img)
-      //   const galleryText = textList.map((textList) => textList.innerHTML);
-      //   console.log("Title list =", galleryText);
-
-      // Mettre en params l'ID de la photo cliqué ?
+      console.log("Object List =", data); // Obtenir une nouvelle liste via filtre ???
     })
   );
 }

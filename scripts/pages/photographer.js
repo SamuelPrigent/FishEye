@@ -157,6 +157,7 @@ async function displayPics(photographerPics) {
     ConteneurPics.appendChild(NewPic); // Injecte la card
     // Index of the Next Picture
     // console.log("Max Index", pictureIndex); // Stock l'index max dans le local storage ? ou autre part ?
+    localStorage.setItem("lightbox-indexMax", pictureIndex); // Stock in local storage l'index
     pictureIndex = pictureIndex + 1;
   });
 }
