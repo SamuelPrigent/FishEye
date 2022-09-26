@@ -21,10 +21,17 @@
 }
 
 .contact_button:hover {
-  /* background-color: #db8876;
-  color: black; */
-  background-color: #2980b9;
-  color: white;
+  background-color: #db8876;
+  color: black;
+  /* background-color: #2980b9;
+  color: white; */
+  border: none;
+  outline: none;
+}
+
+.contact_button:focus {
+  border: none;
+  outline: 3px solid #0000ff5d;
 }
 
 /* Modal Contact */
@@ -353,14 +360,14 @@ select {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover {
-  background-color: #2980b9;
-  border: none;
-  outline: none;
+  /* background-color: #2980b9; */
+  background-color: #db8876;
+  color: black;
 }
 
 .dropbtn:focus {
   border: none;
-  outline: none;
+  outline: 2px solid #0000ff5d;
 }
 
 /* Forms Error Style */
