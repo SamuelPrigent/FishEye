@@ -123,7 +123,7 @@ document
 async function getMedia(index) {
   const data = await getPhotographerPics(); // AllPics => puis on target via index
 
-  // == Refresh Index List by Filter ==
+  // === Refresh Index List by Filter ===
   const filterButton = document.querySelector(".dropbtn");
 
   // Popularity (likes Number)
@@ -142,8 +142,7 @@ async function getMedia(index) {
   //   console.log("Pic Index =", index);
   localStorage.setItem("lightbox-index", index); // Stock in local storage l'index
 
-  // Lightbow naviation Arrow Display
-  // Dom elements // Var
+  // === Lightbox Nav Arrow Display ===
   const arrowLeft = document.querySelector(".lightbox-arrow-left");
   const arrowRight = document.querySelector(".lightbox-arrow-right");
   const indexMax = parseInt(localStorage.getItem("lightbox-indexMax"));
@@ -163,9 +162,9 @@ async function getMedia(index) {
     arrowRight.classList.remove("lightbox-arrow-none");
   }
 
-  // Get Media
+  // ===== GET MEDIA Code =====
+
   if (data[index].image) {
-    // console.log("img");
     const mediaDiv = document.querySelector("#lightbox-media");
     mediaDiv.innerHTML = "";
     const link = `assets/photographers-pics/${data[index].photographerId}/${data[index].image}`;
@@ -176,7 +175,6 @@ async function getMedia(index) {
     mediaDiv.appendChild(newPic);
   }
   if (data[index].video) {
-    // console.log("video");
     const mediaDiv = document.querySelector("#lightbox-media");
     mediaDiv.innerHTML = "";
     const link = `assets/photographers-pics/${data[index].photographerId}/${data[index].video}`;

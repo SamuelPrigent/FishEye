@@ -10,7 +10,7 @@ function picsFactory(pictures) {
     // console.log("index of the pic",index);
 
     // Global Div
-    const mainDiv = document.createElement("div");
+    const mainDiv = document.createElement("a");
     mainDiv.classList.add("PicsCard");
     mainDiv.setAttribute(
       "id",
@@ -25,6 +25,10 @@ function picsFactory(pictures) {
       mainDiv.appendChild(img);
       // === Click to Open LightBox ===
       img.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // focus it - start
+      let indexCard = index + 4;
+      img.setAttribute("tabindex", indexCard);
+      // focus it - end
     }
     if (pictures[index].video) {
       const video = document.createElement("video");
@@ -45,6 +49,10 @@ function picsFactory(pictures) {
       centerIcon.appendChild(videoIcon);
       // === Click to Open LightBox ===
       video.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // focus it - start
+      let indexCard = index + 4;
+      video.setAttribute("tabindex", indexCard);
+      // focus it - end
     }
 
     // Info div (title + likes)

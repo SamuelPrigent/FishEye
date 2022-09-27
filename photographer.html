@@ -19,7 +19,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a tabindex="1" href="index.html">
         <img src="assets/images/logo.png" class="logo" />
       </a>
     </header>
@@ -27,7 +27,7 @@
       <div class="photograph-header">
         <!-- Nom + Location + Quote -->
         <div id="headerLeft"></div>
-        <button class="contact_button" onclick="displayModal()">
+        <button tabindex="2" class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
         <!-- Photographer img -->
@@ -37,7 +37,12 @@
       <div class="conteneur-filtre">
         <div>Trier par</div>
         <!-- Filtre button -->
-        <select class="dropbtn" name="manufactuer" id="manufactuer">
+        <select
+          tabindex="3"
+          class="dropbtn"
+          name="manufactuer"
+          id="manufactuer"
+        >
           <option class="dropbtn-content" value="likes">Popularité</option>
           <option class="dropbtn-content" value="date">Date</option>
           <option class="dropbtn-content" value="name">Nom</option>

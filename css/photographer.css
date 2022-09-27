@@ -217,6 +217,12 @@ form label {
   position: relative;
 }
 
+.PicsCard img:focus,
+.PicsCard video:focus {
+  border: none;
+  outline: 3px solid #0000ff5d;
+}
+
 .imgPicsList {
   aspect-ratio: 1/0.89;
   width: 100%;
