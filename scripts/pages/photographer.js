@@ -38,7 +38,7 @@ async function getUserHeader() {
   const leftDiv = document.createElement("div");
   leftDiv.classList.add("leftDiv");
   // H2
-  const title = document.createElement("h2");
+  const title = document.createElement("h1");
   title.textContent = `${data.name}`;
   title.classList.add("leftDiv-title");
   // Location
@@ -63,6 +63,7 @@ async function getUserHeader() {
   // Img
   const img = document.createElement("img");
   img.classList.add("imgHeader");
+  img.setAttribute("alt", `${data.name}`);
   const picture = `assets/photographers/${data.portrait}`;
   img.setAttribute("src", picture);
   // Right Div
