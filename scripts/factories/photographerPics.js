@@ -29,7 +29,6 @@ function picsFactory(pictures) {
       img.setAttribute("tabindex", indexCard);
       // === Click to Open LightBox ===
       img.setAttribute("onclick", `displayLightboxMedia(${index})`);
-      img.setAttribute("onfocus", `displayLightboxMediaKeypress(${index})`);
     }
     if (pictures[index].video) {
       const video = document.createElement("video");
@@ -54,7 +53,6 @@ function picsFactory(pictures) {
       video.setAttribute("tabindex", indexCard);
       // === Click to Open LightBox ===
       video.setAttribute("onclick", `displayLightboxMedia(${index})`);
-      video.setAttribute("onfocus", `displayLightboxMediaKeypress(${index})`);
     }
 
     // Info div (title + likes)

@@ -11,6 +11,7 @@ async function displayLightboxMedia(index) {
 function closeLightbox() {
   const modal = document.getElementById("lightbox_modal");
   modal.style.display = "none";
+  document.activeElement.blur(); // cancel focus actual target
 }
 
 // ===== KEYUP Lightbox Navigation =====
@@ -67,21 +68,12 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-// ==== Enter in 2 step ====
-
-// Focus => Get Media
-async function displayLightboxMediaKeypress(index) {
-  await getMedia(index);
-}
-
 // Enter => Open Lightbox
 document.addEventListener("keyup", (e) => {
   e.preventDefault;
   switch (e.keyCode) {
     case 13:
-      // console.log("enter");
-      const modal = document.getElementById("lightbox_modal");
-      modal.style.display = "flex";
+      document.activeElement.onclick(e);
       document.activeElement.blur(); // cancel focus actual target
       break;
   }
