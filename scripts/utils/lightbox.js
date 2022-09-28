@@ -7,21 +7,25 @@ async function displayLightboxMedia(index) {
   modal.style.display = "flex";
 }
 
-// ENTER => Open Ligtbox
-// async function displayLightboxMediaKeypress(index) {
-//   await getMedia(index);
-//   document.addEventListener("keyup", (e) => {
-//     e.preventDefault;
-//     switch (e.keyCode) {
-//       case 13:
-//         console.log("enter", index);
-//         const modal = document.getElementById("lightbox_modal");
-//         modal.style.display = "flex";
-//         document.activeElement.blur(); // cancel focus still execute focus and keyup
-//         break;
-//     }
-//   });
-// }
+// ==== Enter in 2 step ====
+
+// Focus => Get Media
+async function displayLightboxMediaKeypress(index) {
+  await getMedia(index);
+}
+
+// Enter => Open Lightbox
+document.addEventListener("keyup", (e) => {
+  e.preventDefault;
+  switch (e.keyCode) {
+    case 13:
+      // console.log("enter");
+      const modal = document.getElementById("lightbox_modal");
+      modal.style.display = "flex";
+      document.activeElement.blur(); // cancel focus still execute focus and keyup
+      break;
+  }
+});
 
 // Close Lightbox
 function closeLightbox() {
@@ -210,5 +214,3 @@ async function getMedia(index) {
   const mediaTitle = document.querySelector(".lightbox-text-media");
   mediaTitle.innerText = `${data[index].title}`;
 }
-
-//
