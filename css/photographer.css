@@ -223,6 +223,11 @@ form label {
   outline: 3px solid #0000ff5d;
 }
 
+header a:focus {
+  border: none;
+  outline: 2px solid #0000ff5d;
+}
+
 .imgPicsList {
   aspect-ratio: 1/0.89;
   width: 100%;

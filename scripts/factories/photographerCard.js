@@ -13,6 +13,7 @@ function photographerFactory(data) {
     // Img
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", `${data.name}`);
     // H2
     const h2 = document.createElement("h2");
     h2.textContent = name;

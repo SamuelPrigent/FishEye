@@ -7,6 +7,22 @@ async function displayLightboxMedia(index) {
   modal.style.display = "flex";
 }
 
+// ENTER => Open Ligtbox
+// async function displayLightboxMediaKeypress(index) {
+//   await getMedia(index);
+//   document.addEventListener("keyup", (e) => {
+//     e.preventDefault;
+//     switch (e.keyCode) {
+//       case 13:
+//         console.log("enter", index);
+//         const modal = document.getElementById("lightbox_modal");
+//         modal.style.display = "flex";
+//         document.activeElement.blur(); // cancel focus still execute focus and keyup
+//         break;
+//     }
+//   });
+// }
+
 // Close Lightbox
 function closeLightbox() {
   const modal = document.getElementById("lightbox_modal");
@@ -171,6 +187,7 @@ async function getMedia(index) {
     // Create Img
     const newPic = document.createElement("img");
     newPic.setAttribute("src", link);
+    newPic.setAttribute("alt", `${data[index].title}`);
     newPic.classList.add("createdMedia");
     mediaDiv.appendChild(newPic);
   }
@@ -181,6 +198,7 @@ async function getMedia(index) {
     // Create Video
     const newVideo = document.createElement("video");
     newVideo.setAttribute("src", link);
+    newVideo.setAttribute("alt", `${data[index].title}`);
     newVideo.autoplay = true;
     newVideo.loop = true;
     newVideo.controls = true;
@@ -192,3 +210,5 @@ async function getMedia(index) {
   const mediaTitle = document.querySelector(".lightbox-text-media");
   mediaTitle.innerText = `${data[index].title}`;
 }
+
+//

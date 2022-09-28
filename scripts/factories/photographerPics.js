@@ -22,19 +22,21 @@ function picsFactory(pictures) {
       const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].image}`;
       img.setAttribute("src", link);
       img.classList.add("imgPicsList");
+      img.setAttribute("alt", `${pictures[index].title}`);
       mainDiv.appendChild(img);
-      // === Click to Open LightBox ===
-      img.setAttribute("onclick", `displayLightboxMedia(${index})`);
-      // focus it - start
+      // TabIndex Route
       let indexCard = index + 4;
       img.setAttribute("tabindex", indexCard);
-      // focus it - end
+      // === Click to Open LightBox ===
+      img.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // img.setAttribute("onfocus", `displayLightboxMediaKeypress(${index})`);
     }
     if (pictures[index].video) {
       const video = document.createElement("video");
       const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].video}`;
       video.setAttribute("src", link);
       video.classList.add("imgPicsList");
+      video.setAttribute("alt", `${pictures[index].title}`);
       mainDiv.appendChild(video);
       // Auto play vidéo
       video.autoplay = true;
@@ -47,12 +49,12 @@ function picsFactory(pictures) {
       videoIcon.classList.add("fa-video");
       mainDiv.appendChild(centerIcon);
       centerIcon.appendChild(videoIcon);
-      // === Click to Open LightBox ===
-      video.setAttribute("onclick", `displayLightboxMedia(${index})`);
-      // focus it - start
+      // TabIndex Route
       let indexCard = index + 4;
       video.setAttribute("tabindex", indexCard);
-      // focus it - end
+      // === Click to Open LightBox ===
+      video.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // video.setAttribute("onfocus", `displayLightboxMediaKeypress(${index})`);
     }
 
     // Info div (title + likes)
