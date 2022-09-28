@@ -36,6 +36,15 @@ const ClickOut = document
     closeModal2();
   });
 
+// Escape : Close
+document.addEventListener("keyup", (e) => {
+  e.preventDefault;
+  if (e.key === "Escape") {
+    // console.log("Echap");
+    closeModal2();
+  }
+});
+
 // Const de vérification d'inputs
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 
