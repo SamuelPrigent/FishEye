@@ -7,26 +7,6 @@ async function displayLightboxMedia(index) {
   modal.style.display = "flex";
 }
 
-// ==== Enter in 2 step ====
-
-// Focus => Get Media
-async function displayLightboxMediaKeypress(index) {
-  await getMedia(index);
-}
-
-// Enter => Open Lightbox
-document.addEventListener("keyup", (e) => {
-  e.preventDefault;
-  switch (e.keyCode) {
-    case 13:
-      // console.log("enter");
-      const modal = document.getElementById("lightbox_modal");
-      modal.style.display = "flex";
-      document.activeElement.blur(); // cancel focus still execute focus and keyup
-      break;
-  }
-});
-
 // Close Lightbox
 function closeLightbox() {
   const modal = document.getElementById("lightbox_modal");
@@ -83,6 +63,26 @@ document.addEventListener("keyup", (e) => {
       if (newIndexNext > 0) {
         arrowLeft.classList.remove("lightbox-arrow-none");
       }
+      break;
+  }
+});
+
+// ==== Enter in 2 step ====
+
+// Focus => Get Media
+async function displayLightboxMediaKeypress(index) {
+  await getMedia(index);
+}
+
+// Enter => Open Lightbox
+document.addEventListener("keyup", (e) => {
+  e.preventDefault;
+  switch (e.keyCode) {
+    case 13:
+      // console.log("enter");
+      const modal = document.getElementById("lightbox_modal");
+      modal.style.display = "flex";
+      document.activeElement.blur(); // cancel focus actual target
       break;
   }
 });
