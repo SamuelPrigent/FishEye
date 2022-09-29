@@ -137,7 +137,6 @@ async function getMedia(index) {
 
   // === Refresh Index List by Filter ===
   const filterButton = document.querySelector(".dropbtn");
-
   // Popularity (likes Number)
   if (filterButton.value === "likes") {
     data.sort((a, b) => b.likes - a.likes);
@@ -150,7 +149,6 @@ async function getMedia(index) {
   if (filterButton.value === "name") {
     data.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
-
   //   console.log("Pic Index =", index);
   localStorage.setItem("lightbox-index", index); // Stock in local storage l'index
 
