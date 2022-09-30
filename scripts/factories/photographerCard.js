@@ -12,7 +12,8 @@ function photographerFactory(data) {
     article.setAttribute("href", `photographer.html?id=${data.id}`); // Liens href array id produits pour nommer url
     article.setAttribute(
       "aria-label",
-      `Lien vers la page du photographe ${data.name}`
+      `Lien vers la page du photographe ${data.name}, tarif de ${data.price}€ par jour, 
+      situé à ${data.city}, ${data.country}`
     );
 
     // Img
