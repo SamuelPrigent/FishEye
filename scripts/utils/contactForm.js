@@ -2,8 +2,12 @@
 
 // Open Modal
 function displayModal() {
+  // display
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  // focus first input
+  const firstInput = document.querySelector("#first");
+  firstInput.focus();
 }
 
 // Close Modal
@@ -36,7 +40,16 @@ const ClickOut = document
     closeModal2();
   });
 
-// Escape : Close
+// Echap => Close 1
+document.addEventListener("keyup", (e) => {
+  e.preventDefault;
+  if (e.key === "Escape") {
+    // console.log("Echap");
+    closeModal();
+  }
+});
+
+// Echap => Close 2
 document.addEventListener("keyup", (e) => {
   e.preventDefault;
   if (e.key === "Escape") {

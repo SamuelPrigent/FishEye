@@ -157,8 +157,7 @@ async function displayPics(photographerPics) {
     const NewPic = CreatePic.createPicsCard(pictureIndex); // Index for target one Picture
     ConteneurPics.appendChild(NewPic); // Injecte la card
     // Index of the Next Picture
-    // console.log("Max Index", pictureIndex); // Stock l'index max dans le local storage ? ou autre part ?
-    localStorage.setItem("lightbox-indexMax", pictureIndex); // Stock in local storage l'index
+    localStorage.setItem("lightbox-indexMax", pictureIndex); // Stock indexMax in local storage l'index
     pictureIndex = pictureIndex + 1;
   });
 }
@@ -242,16 +241,19 @@ async function sortPhotographerPics() {
     if (filterButton.value === "likes") {
       photographerPics.sort((a, b) => b.likes - a.likes);
       displayPics(photographerPics);
+      createEventListenerOnPics();
     }
     // Date (new - older)
     if (filterButton.value === "date") {
       photographerPics.sort((a, b) => new Date(b.date) - new Date(a.date));
       displayPics(photographerPics);
+      createEventListenerOnPics();
     }
     // Title (Abc)
     if (filterButton.value === "name") {
       photographerPics.sort((a, b) => (a.title > b.title ? 1 : -1));
       displayPics(photographerPics);
+      createEventListenerOnPics();
     }
   });
 }

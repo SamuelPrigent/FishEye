@@ -69,15 +69,23 @@ document.addEventListener("keyup", (e) => {
 });
 
 // Enter => Open Lightbox
-document.addEventListener("keyup", (e) => {
-  e.preventDefault;
-  switch (e.keyCode) {
-    case 13:
-      document.activeElement.onclick(e);
-      document.activeElement.blur(); // cancel focus actual target
-      break;
-  }
-});
+async function createEventListenerOnPics() {
+  await getPhotographerPics();
+  const imgCards = document.querySelectorAll(".imgPicsList");
+  imgCards.forEach((element) => {
+    element.addEventListener("keyup", (e) => {
+      // console.log("Event Listener Here");
+      switch (e.keyCode) {
+        case 13:
+          document.activeElement.onclick(e);
+          document.activeElement.blur(); // cancel focus actual target
+          break;
+      }
+    });
+  });
+}
+
+createEventListenerOnPics();
 
 // ===== CLICK Lightbox Navigation =====
 
@@ -185,6 +193,7 @@ async function getMedia(index) {
     newPic.classList.add("createdMedia");
     mediaDiv.appendChild(newPic);
   }
+
   if (data[index].video) {
     const mediaDiv = document.querySelector("#lightbox-media");
     mediaDiv.innerHTML = "";

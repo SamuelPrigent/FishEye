@@ -8,15 +8,10 @@ function picsFactory(pictures) {
   // Création de l'html
   function createPicsCard(index) {
     // console.log("index of the pic",index);
-
     // Global Div
     const mainDiv = document.createElement("a");
     mainDiv.classList.add("PicsCard");
-    mainDiv.setAttribute(
-      "id",
-      `${pictures[index].photographerId}-${pictures[index].id}`
-    ); // création d'ID unique
-    //
+
     if (pictures[index].image) {
       const img = document.createElement("img");
       const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].image}`;
@@ -29,7 +24,13 @@ function picsFactory(pictures) {
       img.setAttribute("tabindex", indexCard);
       // === Click to Open LightBox ===
       img.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // ID unique
+      img.setAttribute(
+        "id",
+        `${pictures[index].photographerId}-${pictures[index].id}`
+      );
     }
+
     if (pictures[index].video) {
       const video = document.createElement("video");
       const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].video}`;
@@ -53,6 +54,11 @@ function picsFactory(pictures) {
       video.setAttribute("tabindex", indexCard);
       // === Click to Open LightBox ===
       video.setAttribute("onclick", `displayLightboxMedia(${index})`);
+      // ID unique
+      video.setAttribute(
+        "id",
+        `${pictures[index].photographerId}-${pictures[index].id}`
+      );
     }
 
     // Info div (title + likes)

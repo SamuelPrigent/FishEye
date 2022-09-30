@@ -409,6 +409,11 @@ select {
   border: 2.5px solid #e54858;
 }
 
+.form-text:focus,
+.form-text-msg:focus {
+  border: 2.5px solid #57d86af0;
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
