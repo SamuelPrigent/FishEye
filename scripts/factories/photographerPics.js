@@ -35,6 +35,7 @@ function picsFactory(pictures) {
       const video = document.createElement("video");
       const link = `assets/photographers-pics/${pictures[index].photographerId}/${pictures[index].video}`;
       video.setAttribute("src", link);
+      video.setAttribute("aria-label", `video, ${pictures[index].title}`);
       video.classList.add("imgPicsList");
       video.setAttribute("alt", `${pictures[index].title}`);
       mainDiv.appendChild(video);

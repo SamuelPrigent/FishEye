@@ -19,7 +19,11 @@
   </head>
   <body>
     <header>
-      <a tabindex="1" href="index.html">
+      <a
+        aria-label="Retour à la page principale de tout les photographes"
+        tabindex="1"
+        href="index.html"
+      >
         <img alt="Logo Fisheye" src="assets/images/logo.png" class="logo" />
       </a>
     </header>
@@ -28,7 +32,7 @@
         <!-- Nom + Location + Quote -->
         <div id="headerLeft"></div>
         <button
-          aria-label="Open contact form modal"
+          aria-label="Ouvre le formulaire de contact"
           tabindex="2"
           class="contact_button"
           onclick="displayModal()"
@@ -43,6 +47,7 @@
         <label for="manufactuer">Trier par</label>
         <!-- Filtre button -->
         <select
+          aria-label="Filtre des photos de la liste ci dessous"
           tabindex="3"
           class="dropbtn"
           name="manufactuer"

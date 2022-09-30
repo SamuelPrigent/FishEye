@@ -10,6 +10,11 @@ function photographerFactory(data) {
     // Global Div => article ou "a" ?
     const article = document.createElement("a");
     article.setAttribute("href", `photographer.html?id=${data.id}`); // Liens href array id produits pour nommer url
+    article.setAttribute(
+      "aria-label",
+      `Lien vers la page du photographe ${data.name}`
+    );
+
     // Img
     const img = document.createElement("img");
     img.setAttribute("src", picture);
