@@ -18,6 +18,7 @@ function picsFactory(pictures) {
       img.setAttribute("src", link);
       img.classList.add("imgPicsList");
       img.setAttribute("alt", `${pictures[index].title}`);
+      img.setAttribute("lang", "en");
       mainDiv.appendChild(img);
       // TabIndex Route
       let indexCard = index + 4;
@@ -38,6 +39,7 @@ function picsFactory(pictures) {
       video.setAttribute("aria-label", `video, ${pictures[index].title}`);
       video.classList.add("imgPicsList");
       video.setAttribute("alt", `${pictures[index].title}`);
+      video.setAttribute("lang", "angl");
       mainDiv.appendChild(video);
       // Auto play vidéo
       video.autoplay = true;
@@ -71,13 +73,14 @@ function picsFactory(pictures) {
     // Info right
     const infoRight = document.createElement("div");
     infoRight.classList.add("infoPicsRight");
-    infoRight.setAttribute("id", `like-${pictures[index].id}`); // id unique ?
-    infoRight.setAttribute("onclick", `likeOnePic(${pictures[index].id})`); // Call like(id) avec paramètre personnalisé
+    infoRight.setAttribute("id", `like-${pictures[index].id}`); // id unique
+    infoRight.setAttribute("onclick", `likeOnePic(${pictures[index].id})`); // Call like(id)
 
     // Titre
     const title = document.createElement("div");
     title.innerText = `${pictures[index].title}`;
     title.classList.add("infoPics-Text"); // pour cibler le texte via Query Selector All
+
     // Likes number
     const likesNumber = document.createElement("div");
     likesNumber.innerText = `${pictures[index].likes}`;
